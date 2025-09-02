@@ -1,34 +1,30 @@
-from flask import Flask, request, redirect, render_template
-import random
-import string
+# Tiny URL Shortener
 
-app = Flask(_name_)
+This is a simple URL Shortener web application built using Flask. It takes a long URL and generates a short, easy-to-use one.
 
-url_map = {}
+### How to Run the Project
 
-def generate_short_url():
-    return ''.join(random.choices(string.ascii_letters + string.digits, k=5))
+To run this app, you'll need Python and a few libraries.
 
-@app.route('/', methods=['GET', 'POST'])
-def home():
-    if request.method == 'POST':
-        long_url = request.form['long_url']
-        short_url = generate_short_url()
-        url_map[short_url] = long_url
-        return f'Short URL: <a href="/{short_url}">http://localhost:5000/{short_url}</a>'
-    return '''
-        <form method="post">
-            Long URL: <input name="long_url" required>
-            <input type="submit">
-        </form>
-    '''
+1.  *Install Libraries:*
+    Open your terminal and run the following command:
 
-@app.route('/<short_url>')
-def redirect_url(short_url):
-    long_url = url_map.get(short_url)
-    if long_url:
-        return redirect(long_url)
-    return "URL not found!"
+    bash
+    pip install flask
+    
 
-if _name_ == '_main_':
-    app.run(debug=True)
+2.  *Run the App:*
+    Once the libraries are installed, run this command in your terminal:
+
+    bash
+    py app.py
+    
+
+    Your app will now be running at http://127.0.0.1:5000/.
+
+### Technologies Used
+
+-   *Python*
+-   *Flask*
+-   *HTML*
+-
